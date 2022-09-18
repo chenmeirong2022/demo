@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hello world</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <!-- 通过src引入Vue的库（原码），这样我们可以直接使用了 -->
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<script>
+  // 创建vue的实例
+  Vue.createApp({
+    // 设置数据，数据定义格式如下：
+    data() {
+      return {
+        content: 1
+        // 定义了一个变量
+      }
+    },
+    // 当页面加载完成，mounted的函数就会自动执行
+    mounted() {
+      setInterval(() => {
+        this.content += 1;
+        // this.$data.content += 1;
+        // 以前面向DOM编程，现在面向数据编程，可以对data中的数据进行操作，数据会自动更新dom中对应的数据
+      }, 1000)
+    },
+    template: '<div>{{content}}</div>'
+    // 找到root节点，把这部分内容<div>{{content}}</div>挂在root节点下挂一个div内容，用{{}}包裹js的变量或表达式
+    // template：模板，在#root里面，作为模板在页面展示内容，渲染内容
+  }).mount('#root');
+  // .mount('#root')：调用mount的方法，（）里面写一个选择节点，意思是在div是#root的元素上使用vue,作用于#root上
+  // 页面要渲染什么内容，用mount函数下的节点来控制
+</script>
+</html>
